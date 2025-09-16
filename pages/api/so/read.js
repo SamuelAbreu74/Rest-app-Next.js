@@ -15,7 +15,7 @@ import { getSo } from "@/repository/so";
 export default async function handler(req, res) {
     if (req.method !== 'GET'){
       res.setHeader('Allow', ['GET']);
-      res.status(405).end(`Method ${req.method} not Allowed!`);
+      return res.status(405).end(`Method ${req.method} not Allowed!`);
     }
 
     try {
@@ -26,6 +26,6 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.log("Failed to search for Service Orders");
-        res.status(500).json({message: "An error occurred on the server!"});
+        return res.status(500).json({message: "An error occurred on the server!"});
     }
 }

@@ -15,21 +15,25 @@ import { createClient } from "@/repository/client"
 export default async function handler(req, res){
     if (req.method !== 'POST'){
         res.setHeader('Allow', ['POST'])
-        res.status(405).end(`Method ${req.method} not Allowed!`)    
+        return res.status(405).end(`Method ${req.method} not Allowed!`)    
     }
 
     try {
         const clientData = req.body;
 
         if(!clientData.name || !clientData.email || !clientData.phone || !clientData.address){
-            res.status(400).json({message: "It is necessary to fill in all fields of the form!"})
+            return res.status(400).json({message: "It is necessary to fill in all fields of the form!"})
         }
         const newClient = await createClient(clientData);
-        res.status(201).json({id: newClient.id, message: "New client created successfully!"});
+        return res.status(201).json({id: newClient.id, message: "New client created successfully!"});
     } catch (error) {
         console.log("Failed to create a new client", error);
-        res.status(500).json({message: "An error occurred on the server"});
+        return res.status(500).json({message: "An error occurred on the server"});
+
+        
     }
 }
+
+
 
 

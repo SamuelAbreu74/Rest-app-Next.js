@@ -14,16 +14,16 @@ import { deleteClient } from "@/repository/client.js"
 export default async function handler(req, res){
     if(req.method !== 'DELETE'){
         res.setHeader('Allow', ['DELETE']);
-        res.status(405).end(`Method ${req.method} not Allowed!`)
+        return res.status(405).end(`Method ${req.method} not Allowed!`)
     }
 
     try {
         const {id} = req.query
         await deleteClient(id)
-        res.status(200).json({message: "Client deleted successfully!"});
+        return res.status(200).json({message: "Client deleted successfully!"});
         
     } catch (error) {
         console.log("Failed to delete the client", error);
-        res.status(500).json({message: "An error occureed on the server"});
+        return res.status(500).json({message: "An error occurred on the server"});
     }
 }

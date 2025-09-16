@@ -17,7 +17,7 @@ import { getClient } from "@/repository/client";
 export default async function handler(req, res) {
     if (req.method !== 'GET'){
       res.setHeader('Allow', ['GET']);
-      res.status(405).end(`Method ${req.method} not Allowed!`);
+      return res.status(405).end(`Method ${req.method} not Allowed!`);
     }
 
     try {
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         res.send(clients)
     } catch (error) {
       console.log("Failure on clients search", error);
-      res.status(500).json({message: "An error occurred on the server"});
+      return res.status(500).json({message: "An error occurred on the server"});
     }
     
 }

@@ -14,17 +14,17 @@ import { deleteSo } from "@/repository/so";
 export default async function handler(req, res){
     if(req.method !== 'DELETE'){
         res.setHeader('Allow', ['DELETE']);
-        res.status(405).end(`Method ${req.method} not Allowed!`)
+        return res.status(405).end(`Method ${req.method} not Allowed!`)
     }
 
     try {
         const {id} = req.query;
 
         await deleteSo(id);
-        res.status(200).json({messsage: "Service Order deleted successfully!"});
+        return res.status(200).json({messsage: "Service Order deleted successfully!"});
 
     } catch (error) {
         console.log("Failed to delete the Service Order", error);
-        res.status(500).json({message: "An error occurred on the server."});
+        return res.status(500).json({message: "An error occurred on the server."});
     }
 }

@@ -19,12 +19,12 @@ export default async function handler(req,res){
         const clientToEditData = req.body
         
         if(!clientToEditData.id){
-            res.status(400).end('Bad Request: This client don`t exist');
+           return res.status(400).end('Bad Request: This client don`t exist');
         }
         updateClient(clientToEditData)
-        res.status(200).end('Client updated Successfully!')
+        return res.status(200).end('Client updated Successfully!')
     } catch (error) {
         console.log("Failure on client update", error);
-        res.status(500).json({message: "An error occurred on the server"});
+        return res.status(500).json({message: "An error occurred on the server"});
     }
 }
