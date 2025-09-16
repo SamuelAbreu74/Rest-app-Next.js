@@ -14,11 +14,6 @@ import { updateClient } from "@/repository/client";
 
 
 export default async function handler(req,res){
-    
-    if(req.method !== 'PUT'){
-        res.setHeader('Allow', ['PUT']);
-        res.status(405).end(`Method ${req.method} not Allowed!`);
-    }
 
     try {
         const clientToEditData = req.body
@@ -27,12 +22,9 @@ export default async function handler(req,res){
             res.status(400).end('Bad Request: This client don`t exist');
         }
         updateClient(clientToEditData)
-        res.status(200).end('client update Successfully!')
+        res.status(200).end('Client updated Successfully!')
     } catch (error) {
         console.log("Failure on client update", error);
         res.status(500).json({message: "An error occurred on the server"});
     }
-
-
-
 }

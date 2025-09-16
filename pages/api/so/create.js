@@ -10,10 +10,7 @@
  * Este script é parte o curso de ADS.
  */
 
-import { createSo } from "@/repository/so";
-import { Timestamp } from "firebase/firestore";
-
-
+import { createSo } from "@/repository/so"; 
 
 export default async function handler(req, res){
     if (req.method !== 'POST'){
@@ -22,10 +19,11 @@ export default async function handler(req, res){
     }
 
     try {
+        
         const soData = req.body;
 
-        if(!soData.Client || !soData.Status || !soData.cost || !soData.date){
-            res.status(400).json({message: "It is necessary to fill in all fields of the form!"})
+        if(!soData.client || !soData.status || !soData.cost || !soData.date){
+            res.status(400).end({message: "It is necessary to fill in all fields of the form!"});
         }
 
         const newSo = await createSo(soData);

@@ -16,6 +16,8 @@
 import { db } from "@/lib/firebase";
 import { addDoc, getDocs , updateDoc, collection, doc, deleteDoc } from "firebase/firestore";
 
+// Collections === Tables
+// Documents === Register/Client
 
 // ------------ POST Function (CREATE) ------------
  export async function createClient(clientData){
@@ -29,9 +31,6 @@ import { addDoc, getDocs , updateDoc, collection, doc, deleteDoc } from "firebas
 
 // ------------ GET Function (READ) ------------ 
 export async function getClient(){ 
-// Collections === Tables
-// Documents === Register/Client
-
 
     // get colletion from DB
     const clientColletion = collection(db, "Clients");

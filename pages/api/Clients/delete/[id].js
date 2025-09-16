@@ -23,7 +23,7 @@ export default async function handler(req, res){
         res.status(200).json({message: "Client deleted successfully!"});
         
     } catch (error) {
-        console.log("Failed to deleted the client", error);
+        console.log("Failed to delete the client", error);
         res.status(500).json({message: "An error occureed on the server"});
     }
 }
