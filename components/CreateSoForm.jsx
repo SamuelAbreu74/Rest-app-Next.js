@@ -29,7 +29,7 @@ export default function CreateOsForm(){
     // Obs: It's necessary for Client Dropdown
     useEffect(() => {
       async function fetchClients() {
-        const response = await fetch('/api/clients/read');
+        const response = await fetch('/api/Clients/read');
         const clientData = await response.json();
         setClients(clientData);
       }

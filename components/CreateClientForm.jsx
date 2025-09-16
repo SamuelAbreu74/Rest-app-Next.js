@@ -34,7 +34,7 @@ export default function CreateClientForm(){
     
         // =-=-=-=-=-=-= Fetch on Create Route =-=-=-=-=-=-= 
         try {
-            const response = await fetch('/api/clients/create', {
+            const response = await fetch('/api/Clients/create', {
                 method: 'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify(clientData),

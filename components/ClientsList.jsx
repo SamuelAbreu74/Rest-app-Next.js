@@ -25,7 +25,7 @@ export default function ClientsList() {
     const allClients = async () => {
         // =-=-=-=-=-=-= Fetch on Read Route =-=-=-=-=-=-= 
         try {
-            const response = await fetch('/api/clients/read', {
+            const response = await fetch('/api/Clients/read', {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
             });
@@ -48,7 +48,7 @@ export default function ClientsList() {
 
         // =-=-=-=-=-=-= Fetch on Delete Route =-=-=-=-=-=-=
         try {
-            const response = await fetch(`/api/clients/delete/${client.id}`, {
+            const response = await fetch(`/api/Clients/delete/${client.id}`, {
                 method: 'DELETE',
                 headers: {'Content-Type' : 'application/json'},
             });

@@ -48,7 +48,7 @@ export default function EditClientModal({client, onSaveSuccess}) {
 
         // =-=-=-=-=-=-= Fetch on Update Route =-=-=-=-=-=-= 
         try {
-            const response = await fetch('api/clients/update', {
+            const response = await fetch('api/Clients/update', {
                 // Fetch Configs
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
