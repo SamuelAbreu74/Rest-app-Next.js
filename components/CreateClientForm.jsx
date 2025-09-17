@@ -55,10 +55,11 @@ export default function CreateClientForm(){
             setEmail('');
             setAddress('');
             setPhone('');
-            allClients();
+           
 
         } catch (error) {
             setMessage(`Error: ${error.message}`);
+            console.log("aqui");
         }
     };
    
