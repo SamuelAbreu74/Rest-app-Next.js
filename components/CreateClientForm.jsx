@@ -11,6 +11,7 @@
  */
 
 import { useState } from "react"
+import allClients from "./ClientsList";
 
 export default function CreateClientForm(){
     // =-=-=-=-=-=-= Create a state for each form value =-=-=-=-=-=-=
@@ -54,6 +55,7 @@ export default function CreateClientForm(){
             setEmail('');
             setAddress('');
             setPhone('');
+            allClients();
 
         } catch (error) {
             setMessage(`Error: ${error.message}`);

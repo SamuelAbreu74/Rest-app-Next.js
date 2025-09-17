@@ -20,7 +20,11 @@ export default function ClientsList() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [clientToEdit, setClientToEdit] = useState(null);
     const [message, setMessage] = useState('');
-
+    
+    
+        useEffect(() => {
+            allClients();
+        }, []);
 
     const allClients = async () => {
         // =-=-=-=-=-=-= Fetch on Read Route =-=-=-=-=-=-= 
@@ -60,16 +64,13 @@ export default function ClientsList() {
                 throw new Error(result.message || "Something went Wrong")
             }
             setMessage('Cliente deletado com sucesso!');
+            allClients();
 
         } catch (error) {
             setMessage(`Error: ${error.message}`);
         }
     }
 
-
-    useEffect(() => {
-        allClients();
-    }, []);
 
     // =-=-=-=-=-=-= Edit Handle =-=-=-=-=-=-=
     const handleEditClick = (client) => {
